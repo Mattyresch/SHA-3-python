@@ -207,6 +207,13 @@ def permutation(A):
     colcount=0
     p_a = computeParity(A)
     applyParity(A, p_a)
+    #now get the string representation of each 25 strings, bitwise shift
+
+    #permute 25 words in fixed pattern
+
+    #bitwise combine
+
+    #XOR constant
 ##
 ##    for x in range(0,5):
 ##        for z in range(0,64):
