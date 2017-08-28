@@ -30,54 +30,71 @@ def rightShiftNew(bit, shift, wordsize):
     result=''
     for i in new:
         result += i
-    print(result)
-            
-#change 16 to desired word size
-def rightShift(bits, seq_no):
-    new = [0]*16
-    check = 16 - seq_no
-    shift = seq_no
-    for x in range(0, 16):
-        if(x == check):
-            new[0] = bits[x]
-        elif(x > check):
-            shift = 0
-            shift = (x+shift) - 16
-            new[abs(shift)] = bits[x]
-        elif(x < check):
-            new[x+shift] = bits[x]
-    result =''
-    for i in new:
-        result+=str(i)
-    print(result + " right shift 8 bits")
+    print(result + "right shifted")
+    return new
 
-def newShift(bits, seq_no):
-    temp = 16 - seq_no
-    slice1 = bits[temp:]
-    slice2 = bits[0:temp]
-    #print("bits in order: " + bits)
-    #print("end slice: " + slice1)
-    #print("start slice: " + slice2)
-    print(slice1 + slice2 + " shifted: 8 bits")
-
-def leftShift(bits, seq_no):
-    new_word = [0]*64
-    if(seq_no > 64):
-        shift = (seq_no % 64)
-    else:
-        shift = seq_no
-    
-    for x in range(0, 64):
-        if(x < shift):
-              remainder=shift-x
-              new_word[64-remainder] = bits[x]
+def leftShiftNew(bit, shift, wordsize):
+    new = [0]*wordsize
+    for x in range(0, wordsize):
+        temp = x - shift
+        if(temp<0):
+            temp = (temp%wordsize)
+            new[temp] = bit[x]
+            temp = 0
         else:
-            new_word[x-shift] = bits[x]
+            new[temp] = bit[x]
+            temp = 0
     result = ''
-    for i in new_word:
-        result += i
-    print(result + " left shift")
-    return(result)
+    for i in new:
+        result+=i
+    print(result + "shifted back to original")
+
+###change 16 to desired word size
+##def rightShift(bits, seq_no):
+##    new = [0]*16
+##    check = 16 - seq_no
+##    shift = seq_no
+##    for x in range(0, 16):
+##        if(x == check):
+##            new[0] = bits[x]
+##        elif(x > check):
+##            shift = 0
+##            shift = (x+shift) - 16
+##            new[abs(shift)] = bits[x]
+##        elif(x < check):
+##            new[x+shift] = bits[x]
+##    result =''
+##    for i in new:
+##        result+=str(i)
+##    print(result + " right shift 8 bits")
+##
+##def newShift(bits, seq_no):
+##    temp = 16 - seq_no
+##    slice1 = bits[temp:]
+##    slice2 = bits[0:temp]
+##    #print("bits in order: " + bits)
+##    #print("end slice: " + slice1)
+##    #print("start slice: " + slice2)
+##    print(slice1 + slice2 + " shifted: 8 bits")
+##
+##def leftShift(bits, seq_no):
+##    new_word = [0]*64
+##    if(seq_no > 64):
+##        shift = (seq_no % 64)
+##    else:
+##        shift = seq_no
+##    
+##    for x in range(0, 64):
+##        if(x < shift):
+##              remainder=shift-x
+##              new_word[64-remainder] = bits[x]
+##        else:
+##            new_word[x-shift] = bits[x]
+##    result = ''
+##    for i in new_word:
+##        result += i
+##    print(result + " left shift")
+##    return(result)
 
 def pad(message, rate):
     string = toBit(message)
