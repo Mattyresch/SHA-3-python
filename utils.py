@@ -16,22 +16,21 @@ def fromBit(bits):
         chars.append(chr(int(''.join([str(bit) for bit in byte]), 2)))
     return ''.join(chars)
 
-def tryShiftNew(bit, shift):
-    new = [0]*16
-    for x in range(0, 16):
+def rightShiftNew(bit, shift, wordsize):
+    new = [0]*wordsize
+    for x in range(0, wordsize):
         temp = x + shift
-        if(temp>=16):
-            temp = (temp%16)
+        if(temp>=wordsize):
+            temp = (temp%wordsize)
             new[temp] = bit[x]
             temp = 0
-        elif(temp < 16):
+        elif(temp < wordsize):
             new[temp] = bit[x]
             temp = 0
     result=''
     for i in new:
         result += i
     print(result)
-    print(new)
             
 #change 16 to desired word size
 def rightShift(bits, seq_no):
