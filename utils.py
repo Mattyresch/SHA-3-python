@@ -50,6 +50,7 @@ def leftShift(bits, seq_no):
         result += i
     print(result + "This is a left shift")
     return(result)
+
 def pad(message, rate):
     string = toBit(message)
     remainder = len(string)%rate
@@ -84,7 +85,14 @@ def pad(message, rate):
 def xor(x, y):
     return '{1:0{0}b}'.format(len(x), int(x, 2) ^ int(y, 2))
 
-
+def triangleNumber(x):
+    temp = 0
+    if(x==0):
+        return
+    elif(x>=0):
+        temp = (x*(x+1))/2
+        print(str(temp))
+        return(temp)
 
 def Keccac(item_list, capacity, state, A):
     for i in item_list:
@@ -139,7 +147,7 @@ def bitwiseCombine(A):
 def bitwiseAnd(x, y):
     if(x==1.0):
         x == 0.0
-    else if(x==0.0):
+    elif(x==0.0):
         x == 1.0
     if(x == y):
         if(x == 1.0):
