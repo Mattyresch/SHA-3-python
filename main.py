@@ -3,10 +3,15 @@ from utils import *
 
 def main():
 ##    print("0101001101010011010100110101001101010011010100110101001101010011 This is the original")
-##    test_str = leftShift('0101001101010011010100110101001101010011010100110101001101010011', 15)
-##    result_test = rightShift(test_str, 15)
-    for x in range(0, 24):
-        triangleNumber(x)
+
+    rightShift('1100101000110101', 8)
+    newShift('1100101000110101', 8)
+    rightShiftNew('1100101000110101', 8)
+##    leftShift('0101001101010011010100110101001101010011010100110101001101010011', 15)
+##    rightShift('0101001101010011001101011100111000110101110011100101001101010011', 15)
+##    newShift('0101001101010011001101011100111000110101110011100101001101010011', 15)
+##    for x in range(0, 24):
+##        triangleNumber(x)
     string = input("Please enter a string \n")
     binrep = toBit(string)
     A = numpy.zeros((5,5,64))
