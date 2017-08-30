@@ -180,7 +180,20 @@ def applyParity(A, p_a):
                 except IndexError as e:
                     A[x, y, z] = xor(str(int(A[x, y, z])), str(int(p_a[x-1, z-1])))
                 print("New 3d Array Value: " + str(A[x, y, z]))
+def LFSR(round_no):
+    initial = '00000001'
+    m = 5
+    bitreturn = (5 + 7*round_no) % 8
 
+    for i = 0, i < round_no, i++:
+        res1 = xor(initial[7], initial[3])
+        res2 = xor(initial[1], initial[2])
+        newbit = xor(res1, res2)
+        for x in (1, 8):
+           initial[x] = initial[x-1]
+        initial[0] = newbit
+    return initial[bitreturn]
+    
 def bitwiseCombine(A):
     for x in range(0, 5):
         for y in range(0, 5):
@@ -203,17 +216,23 @@ def bitwiseAnd(x, y):
         return 0.0
 
 def permutation(A):
+    B = numpy.zeros((5,5,64))
     count = 0
-    colcount=0
-    p_a = computeParity(A)
-    applyParity(A, p_a)
-    #now get the string representation of each 25 strings, bitwise shift
-
-    #permute 25 words in fixed pattern
-
-    #bitwise combine
-
-    #XOR constant
+    for i in range(0,25):
+	p_a = computeParity(A)
+	applyParity(A, p_a)
+	#now get the string representation of each 25 strings, bitwise shift
+	for x in range(0, 5):
+		for y in range(0, 5):
+			rightShiftNew(A[x,y], triangleNumber(count), 64)
+			count++
+	#permute 25 words in fixed pattern
+	for x in range(0, 5):
+            for y in range(0, 5):
+                B[x, y] = A[y, 3x + y]
+	#bitwise combine
+        bitwiseCombine(B)
+	#XOR constant
 ##
 ##    for x in range(0,5):
 ##        for z in range(0,64):
