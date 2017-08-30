@@ -185,7 +185,7 @@ def LFSR(round_no):
     m = 5
     bitreturn = (5 + 7*round_no) % 8
 
-    for i = 0, i < round_no, i++:
+    for i in range(0, round_no):
         res1 = xor(initial[7], initial[3])
         res2 = xor(initial[1], initial[2])
         newbit = xor(res1, res2)
