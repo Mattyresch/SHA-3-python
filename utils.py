@@ -1,6 +1,8 @@
 import sys
 import numpy
 
+##REDO ERROR CHECKS: IF INDEX ERROR, PERFORM MODULO 5/64 ARITHMETIC
+
 def toBit(string):
     result = []
     for c in string:
@@ -225,11 +227,11 @@ def permutation(A):
 	for x in range(0, 5):
 		for y in range(0, 5):
 			rightShiftNew(A[x,y], triangleNumber(count), 64)
-			count++
+			count = count+1
 	#permute 25 words in fixed pattern
 	for x in range(0, 5):
             for y in range(0, 5):
-                B[x, y] = A[y, 3x + y]
+                B[x, y] = A[y, 3*x + y]
 	#bitwise combine
         bitwiseCombine(B)
 	#XOR constant
