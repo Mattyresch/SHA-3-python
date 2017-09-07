@@ -176,11 +176,12 @@ def applyParity(A, p_a):
                 print("3d Array Value at : (" + str(x) + "," + str(y) + "," + str(z) + ") = " + str(A[x, y, z]))
                 print("Parity Array Value: " + str(p_a[x-1, z]))
                 print(str(int(A[x, y, z])))
+                
                 A[x, y, z] = xor(str(int(A[x, y, z])), str(int(p_a[x-1, z])))
                 try:
                     A[x, y, z] = xor(str(int(A[x, y, z])), str(int(p_a[x+1, z-1])))
                 except IndexError as e:
-                    A[x, y, z] = xor(str(int(A[x, y, z])), str(int(p_a[x-1, z-1])))
+                    A[x, y, z] = xor(str(int(A[x, y, z])), str(int(p_a[(x%5), z-1])))
                 print("New 3d Array Value: " + str(A[x, y, z]))
 def LFSR(round_no):
     initial = '00000001'
